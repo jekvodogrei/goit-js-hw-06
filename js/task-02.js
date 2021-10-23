@@ -22,13 +22,13 @@
 
 const ingredients = ['Potatoes', 'Mushrooms', 'Garlic', 'Tomatos', 'Herbs', 'Condiments'];
 
-const ulList = document.querySelector('#ingredients');
+const listIngredients = [];
 
-const elList = ingredients.forEach(ingredient => {
-  const ingredientsFood = document.createElement('li');
-  ingredientsFood.classList.add('item');
+ingredients.map(ingredient => {
+  let ingredientsFood = document.createElement('li');
   ingredientsFood.textContent = ingredient;
-  ulList.appendChild(ingredientsFood);
+  ingredientsFood.classList.add('item');
+  listIngredients.push(ingredientsFood);
 });
 
-console.log(ulList);
+document.querySelector('#ingredients').append(...listIngredients);

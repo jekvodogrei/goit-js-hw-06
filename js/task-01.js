@@ -17,12 +17,11 @@
 
 'use strict';
 
-const totalCategories = document.querySelectorAll('.item');
-console.log(`Number of categories: ${totalCategories.length}`);
+const items = document.querySelectorAll('.item');
 
-const categoriesArray = [...totalCategories].map(
-  categories => `Category: ${categories.children[0].textContent} 
-Elements: ${categories.children[1].children.length}`,
-);
+console.log(`Number of categories: ${items.length}`);
 
-console.log(categoriesArray);
+items.forEach(el => {
+  console.log(`category: ${el.querySelector('h2').textContent}`);
+  console.log(`Elements: ${el.querySelectorAll('li').length}`);
+});

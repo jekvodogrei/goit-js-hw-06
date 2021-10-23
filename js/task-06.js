@@ -22,21 +22,18 @@
 //   border-color: #f44336;
 // }
 'use strict';
-const inputVal = document.getElementById('validation-input');
 
-const totalLenght = inputVal.getAttribute('data-length');
-const intTotallenght = parseInt(totalLenght);
+const inputVal = document.querySelector('#validation-input');
+const intTotalLenght = parseInt(inputVal.dataset.length);
 
-inputVal.oninput = function () {
-  if (inputVal.value.length === intTotallenght) {
-    inputVal.classList.remove('invalid');
+const inputValEl = () => {
+  if (inputVal.value.length === intTotalLenght) {
     inputVal.classList.add('valid');
-  }
-  if (inputVal.value.length === 0) {
-    inputVal.classList.remove('valid');
-    inputVal.classList.remove('invalid');
-  }
-  if (inputVal.value.length !== intTotallenght && inputVal.value.length !== 0) {
+    inputVal.classList.replace('invalid', 'valid');
+  } else {
     inputVal.classList.add('invalid');
+    inputVal.classList.replace('valid', 'invalid');
   }
 };
+
+inputVal.addEventListener('blur', inputValEl);
